@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; color-scheme: dark; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0b1326;
+  background-image: radial-gradient(circle at 50% 0%, #131b2e 0%, #0b1326 60%);
+  color: #dae2fd;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── Grid dot texture ──────────────────────────────────────────────── */
+.grid-texture {
+  background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Glass card helper ─────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(23, 31, 51, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+}
+
+/* ── Material Symbols ──────────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Screen slide transitions ──────────────────────────────────────── */
+.screen-slide-left-out  { animation: slideLeftOut  300ms ease forwards; }
+.screen-slide-right-in  { animation: slideRightIn  300ms ease forwards; }
+.screen-slide-right-out { animation: slideRightOut 300ms ease forwards; }
+.screen-slide-left-in   { animation: slideLeftIn   300ms ease forwards; }
+
+@keyframes slideLeftOut  { from { transform: translateX(0);    opacity: 1; } to { transform: translateX(-60px); opacity: 0; } }
+@keyframes slideRightIn  { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0);     opacity: 1; } }
+@keyframes slideRightOut { from { transform: translateX(0);    opacity: 1; } to { transform: translateX(60px);  opacity: 0; } }
+@keyframes slideLeftIn   { from { transform: translateX(-60px);opacity: 0; } to { transform: translateX(0);     opacity: 1; } }
+
+/* ── Score counter animation ───────────────────────────────────────── */
+@keyframes scoreCount { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+.score-appear { animation: scoreCount 600ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+/* ── Stagger item reveal ───────────────────────────────────────────── */
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-item { opacity: 0; animation: fadeSlideUp 400ms ease forwards; }
+
+/* ── Glow pulse ────────────────────────────────────────────────────── */
+@keyframes glowPulse { 0%,100% { box-shadow: 0 0 8px rgba(192,193,255,0.3); } 50% { box-shadow: 0 0 20px rgba(192,193,255,0.7); } }
+.glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+
+/* ── DTI bar transition ────────────────────────────────────────────── */
+.dti-bar-fill { transition: width 600ms cubic-bezier(0.4,0,0.2,1), background-color 400ms ease; }
+
+/* ── Toast animations ──────────────────────────────────────────────── */
+@keyframes toastIn  { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0);    opacity: 1; } }
+@keyframes toastOut { from { transform: translateX(0);    opacity: 1; } to { transform: translateX(110%); opacity: 0; } }
+.toast-enter { animation: toastIn  350ms cubic-bezier(0.22,1,0.36,1) forwards; }
+.toast-leave { animation: toastOut 300ms ease forwards; }
+
+/* ── Loading spinner ───────────────────────────────────────────────── */
+@keyframes spinRing { to { transform: rotate(360deg); } }
+.spin-ring { animation: spinRing 0.85s linear infinite; }
+
+/* ── Decision banner glow ──────────────────────────────────────────── */
+@keyframes approvalGlow  { 0%,100% { box-shadow: 0 0 24px rgba(105,240,174,0.25); } 50% { box-shadow: 0 0 48px rgba(105,240,174,0.55); } }
+@keyframes rejectionGlow { 0%,100% { box-shadow: 0 0 24px rgba(255,80,80,0.25);   } 50% { box-shadow: 0 0 48px rgba(255,80,80,0.55);   } }
+.approval-glow  { animation: approvalGlow  2.5s ease-in-out infinite; }
+.rejection-glow { animation: rejectionGlow 2.5s ease-in-out infinite; }

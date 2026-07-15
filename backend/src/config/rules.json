@@ -1,0 +1,26 @@
+{
+  "minimum_income": 15000,
+  "max_dti": 45,
+  "critical_dti": 60,
+  "minimum_credit_history": 6,
+  "short_credit_history": 12,
+  "max_defaults": 1,
+  "max_existing_loans": 2,
+  "score_deductions": {
+    "high_dti": 150,
+    "critical_dti": 100,
+    "one_default": 200,
+    "short_credit_history": 100,
+    "excess_loans": 80
+  },
+  "score_bands": {
+    "low_risk_min": 700,
+    "medium_risk_min": 500
+  },
+  "loan": {
+    "recommended_loan_multiplier": 1.5,
+    "annual_interest_rate": 12,
+    "tenure_months": 12,
+    "affordable_emi_percentage": 0.4
+  }
+}
