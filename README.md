@@ -6,7 +6,7 @@
 ![MySQL](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql)
 ![Ollama](https://img.shields.io/badge/AI-Ollama-orange)
 ![Swagger](https://img.shields.io/badge/API-Swagger-green?logo=swagger)
-![License](https://img.shields.io/badge/License-MIT-blue)
+
 
 An enterprise-inspired **AI-powered micro-credit loan approval system** that combines a deterministic credit scoring engine with **Explainable AI (XAI)** to generate transparent, auditable, and business-friendly lending decisions.
 
