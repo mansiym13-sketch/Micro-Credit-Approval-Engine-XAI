@@ -1,93 +1,413 @@
-🏦 Micro Credit Approval Engine
+# 🏦 Explainable AI Powered Micro Credit Approval Engine
 
-A full-stack web application designed to evaluate, score, and manage micro-credit loan applications. This system features a dynamic, rule-based scoring engine, real-time financial metrics visualization, and automated report generation, providing a complete solution for processing micro-loans.
+![React](https://img.shields.io/badge/Frontend-React-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green?logo=node.js)
+![Express](https://img.shields.io/badge/Framework-Express-black?logo=express)
+![MySQL](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql)
+![Ollama](https://img.shields.io/badge/AI-Ollama-orange)
+![Swagger](https://img.shields.io/badge/API-Swagger-green?logo=swagger)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 🚀 Features
+An enterprise-inspired **AI-powered micro-credit loan approval system** that combines a deterministic credit scoring engine with **Explainable AI (XAI)** to generate transparent, auditable, and business-friendly lending decisions.
 
-* **Dynamic Loan Evaluation:** An interactive `LoanForm` combined with a robust backend `loanScoringService` to evaluate applications based on configurable rules (`rules.json`).
-* **Explainable AI (XAI) Layer:** A new `xaiService` translates the deterministic rule engine's output (score, DTI, triggered rules) into a plain-English, auditable underwriting summary. It calls a locally hosted LLM via the Ollama REST API (data never leaves the machine) and transparently falls back to a deterministic natural-language template if no local model is available — the decision itself always stays 100% rule-based, the AI layer only explains it.
-* **Real-Time Visualizations:** Includes a `LiveDTIBar` (Debt-to-Income) and `ScoreGauge` to give immediate visual feedback on an applicant's financial health, plus an `AIInsightCard` showing the AI-generated explanation with outcome-aware styling.
-* **Automated PDF Reports:** Generates downloadable, detailed PDF summaries of loan decisions using the backend `pdfReportService`, including a dedicated "AI Underwriting Summary" section for the audit trail.
-* **Comprehensive Dashboards:** Dedicated pages for evaluating new loans (`LoanEvaluator`), reviewing past decisions (`History`), and managing active loans (`Portfolio`).
-* **API Documentation:** Built-in Swagger API documentation for easy backend testing and integration.
-* **Responsive UI:** A modern, clean frontend built with React, Vite, and Tailwind CSS.
+The application simulates how modern financial institutions evaluate micro-credit applications using financial risk analytics, business rules, AI-generated underwriting summaries, portfolio insights, and automated PDF reports.
 
-## 🛠️ Tech Stack
+---
 
-**Frontend:**
-* React (with Vite)
-* Tailwind CSS (for styling)
-* Axios (for API communication)
+# 🎯 Problem Statement
 
-**Backend:**
-* Node.js & Express.js
-* Custom Rule-Based Engine (`rules.json`)
-* PDF Generation Service
-* Swagger UI (for API Docs)
+Financial institutions must make lending decisions that are:
 
-## 📂 Project Structure
+- Fast
+- Accurate
+- Transparent
+- Auditable
+- Explainable
+
+Traditional loan approval systems often provide only an approval or rejection without explaining **why** the decision was made.
+
+This project addresses that challenge by combining:
+
+- Rule-Based Credit Scoring
+- Explainable AI (XAI)
+- Financial Risk Analytics
+- Automated Reporting
+- Portfolio Management
+
+to build a transparent loan underwriting platform.
+
+---
+
+# ✨ Key Features
+
+## 🤖 Explainable AI
+
+- Explainable AI (XAI) powered underwriting summaries
+- Human-readable loan decision explanations
+- Ollama Llama 3 integration
+- Automatic fallback to deterministic explanations if AI model is unavailable
+- AI layer never changes the loan decision—it only explains it
+
+---
+
+## 💳 Loan Evaluation Engine
+
+- Rule-based credit scoring
+- Debt-to-Income (DTI) calculation
+- Risk band classification
+- Credit history evaluation
+- Existing loan assessment
+- Default history analysis
+- Recommended loan amount
+- EMI affordability calculation
+
+---
+
+## 📊 Financial Analytics
+
+- Live Credit Score Gauge
+- Live DTI Visualization
+- Risk Analysis Dashboard
+- Portfolio Statistics
+- Loan History
+- Business Rule Evaluation
+
+---
+
+## 📄 Report Generation
+
+- Downloadable PDF Loan Report
+- AI Underwriting Summary
+- Complete Rule Evaluation
+- Audit-Friendly Report Format
+
+---
+
+## 🌐 REST API
+
+- Loan Evaluation API
+- Loan History API
+- Portfolio Analytics API
+- PDF Report API
+- Swagger Documentation
+
+---
+
+## 🎨 User Interface
+
+- Modern FinTech Dashboard
+- Responsive Design
+- Real-time Validation
+- Interactive Charts
+- Dark Theme UI
+
+---
+
+# 🏗️ System Architecture
 
 ```text
-Micro--Credit-Approval-Engine/
+                    React + Vite Frontend
+                             │
+                             ▼
+                   Express REST API Server
+                             │
+        ┌────────────────────┴────────────────────┐
+        ▼                                         ▼
+ Rule-Based Credit Engine               Explainable AI Layer
+                                               │
+                                               ▼
+                                      Ollama (Llama 3)
+                                               │
+        └────────────────────┬──────────────────┘
+                             ▼
+                        MySQL Database
+                             │
+                             ▼
+                   PDF Report Generation
+```
+
+---
+
+# 🛠️ Technology Stack
+
+| Layer | Technologies |
+|--------|--------------|
+| Frontend | React.js, Vite, Tailwind CSS |
+| Backend | Node.js, Express.js |
+| Database | MySQL |
+| AI | Ollama, Llama 3, Explainable AI |
+| API | Swagger |
+| HTTP Client | Axios |
+| Reporting | PDFKit |
+| Version Control | Git & GitHub |
+
+---
+
+# 📂 Project Structure
+
+```text
+Micro-Credit-Approval-Engine-XAI
 │
-├── backend/                  # Node.js Express API
-│   ├── src/
-│   │   ├── config/           # DB setup, rules.json, Swagger config
-│   │   ├── controllers/      # API logic (loanController.js)
-│   │   ├── routes/           # API endpoints (loanRoutes.js)
-│   │   ├── services/         # Scoring, database, and PDF services
-│   │   └── validations/      # Request validation logic
-│   ├── app.js                # Express app setup
-│   └── server.js             # Server entry point
+├── backend
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── routes
+│   │   ├── services
+│   │   ├── validations
+│   │   └── app.js
+│   │
+│   ├── server.js
+│   └── .env
 │
-└── frontend/                 # React UI
-    ├── public/
-    └── src/
-        ├── api/              # Axios instance and API calls
-        ├── components/       # Reusable UI components (Form, Gauges, Badges)
-        ├── layouts/          # Main application layout
-        └── pages/            # Main views (Evaluator, History, Portfolio)
-⚙️ Getting Started
-To get a local copy up and running, follow these simple steps.
+├── frontend
+│   ├── src
+│   │   ├── api
+│   │   ├── components
+│   │   ├── layouts
+│   │   ├── pages
+│   │   └── assets
+│   │
+│   └── public
+│
+├── README.md
+└── .gitignore
+```
 
-Prerequisites
-Node.js (v16 or higher recommended)
+---
 
-npm or yarn package manager
+# ⚙️ Installation
 
-1. Backend Setup
-Open a terminal and navigate to the backend directory:
+## Clone Repository
 
-Bash
-cd Micro--Credit-Approval-Engine/backend
-Install backend dependencies:
+```bash
+git clone https://github.com/mansiym13-sketch/Micro-Credit-Approval-Engine-XAI.git
 
-Bash
+cd Micro-Credit-Approval-Engine-XAI
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+
 npm install
-Start the backend development server:
 
-Bash
 npm run dev
-# Note: Ensure you have your environment variables (.env) configured if required by db.js
-The API will typically run on http://localhost:5000 or the port specified in your server configuration. You can access the Swagger UI at /api-docs.
+```
 
-2. Frontend Setup
-Open a new terminal window and navigate to the frontend directory:
+Backend runs at:
 
-Bash
-cd Micro--Credit-Approval-Engine/frontend
-Install frontend dependencies:
+```
+http://localhost:5000
+```
 
-Bash
+Swagger Documentation:
+
+```
+http://localhost:5000/api-docs
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+
 npm install
-Start the Vite development server:
 
-Bash
 npm run dev
-The frontend application will typically be accessible at http://localhost:5173.
+```
 
-📚 API Documentation
-This project uses Swagger for API documentation. Once the backend server is running, navigate to the designated Swagger endpoint (usually http://localhost:5000/api-docs depending on your swagger.js config) to explore and test the available loan evaluation and portfolio endpoints.
+Frontend runs at:
 
-🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
+```
+http://localhost:3000
+```
+
+---
+
+# 🔐 Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+```env
+PORT=5000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=loan_approval_engine
+DB_PORT=3306
+
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=llama3
+```
+
+---
+
+# 📡 REST APIs
+
+| Method | Endpoint | Description |
+|----------|--------------------------|--------------------------|
+| POST | /api/loan/evaluate | Evaluate Loan |
+| GET | /api/loan/history | Loan History |
+| GET | /api/loan/portfolio/stats | Portfolio Analytics |
+| GET | /api/loan/report/:id | Download PDF Report |
+
+---
+
+# 📈 Financial Metrics Used
+
+- Monthly Income
+- Monthly Expenses
+- Debt-to-Income Ratio (DTI)
+- Existing Loans
+- Credit History
+- Payment Defaults
+- Credit Score
+- Risk Band
+- Recommended Loan Amount
+- EMI Affordability
+
+---
+
+# 🧠 Explainable AI Workflow
+
+1. User submits loan application.
+
+2. Rule Engine evaluates:
+
+- Income
+- DTI
+- Credit History
+- Existing Loans
+- Defaults
+
+3. Credit score is generated.
+
+4. Loan decision is made.
+
+5. Explainable AI converts technical rules into a natural-language underwriting summary.
+
+6. Loan application is stored in MySQL.
+
+7. PDF report is generated.
+
+---
+
+# 💼 Skills Demonstrated
+
+### Artificial Intelligence
+
+- Explainable AI (XAI)
+- Generative AI Integration
+- Prompt Engineering
+- AI-assisted Decision Support
+
+### Full Stack Development
+
+- React.js
+- Node.js
+- Express.js
+- REST APIs
+- Axios
+
+### Database
+
+- MySQL
+- Database Design
+- CRUD Operations
+
+### Software Engineering
+
+- MVC Architecture
+- API Development
+- Validation
+- Error Handling
+- Business Rule Engine
+
+### Financial Technology (FinTech)
+
+- Credit Scoring
+- Risk Analytics
+- Loan Underwriting
+- Financial Decision Support
+- Debt-to-Income Analysis
+
+### Developer Tools
+
+- Swagger
+- Git
+- GitHub
+- VS Code
+- Postman
+
+---
+
+# 🚀 Future Enhancements
+
+- AI Agent-based Loan Underwriting
+- Fraud Detection using Machine Learning
+- Credit Bureau API Integration
+- Cloud Deployment (AWS)
+- Docker Containerization
+- Kubernetes Deployment
+- CI/CD using GitHub Actions
+- User Authentication & Authorization
+- Admin Dashboard
+- Predictive Loan Default Models
+
+---
+
+
+
+# 🎯 Learning Outcomes
+
+- Built a complete Full Stack FinTech application.
+- Integrated Explainable AI with a deterministic rule engine.
+- Designed REST APIs using Express.js.
+- Implemented MySQL database connectivity.
+- Generated AI-assisted underwriting summaries.
+- Built interactive financial dashboards.
+- Created downloadable PDF audit reports.
+- Documented APIs using Swagger.
+
+---
+
+# 📌 Use Cases
+
+- Digital Lending Platforms
+- NBFC Loan Processing
+- Banking Risk Assessment
+- Financial Decision Support Systems
+- Explainable AI Research
+- FinTech Innovation Projects
+
+---
+
+# 👩‍💻 Author
+
+## Mansi Ahirrao
+
+- AWS Certified Cloud Practitioner and AI Practitioner 
+- AI & Machine Learning Enthusiast
+- Cloud Computing
+- DevOps
+- Full Stack Development
+- Financial Technology (FinTech)
+
+**GitHub**
+
+https://github.com/mansiym13-sketch
+
+**LinkedIn**
+
+https://www.linkedin.com/in/mansi-ahirrao-7652992a8/
+
+---
+
+# ⭐ If you found this project useful, consider giving it a Star!
